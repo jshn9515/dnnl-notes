@@ -15,7 +15,7 @@ $endif$
   main-color: brand-color.at("primary", default: blue),
   part-font-size: 8em,
   logo: none,
-  cover: image("assets/book-cover.jpg"),
+  cover: image("assets/dnnl-book"),
   cover-background: none,
 $if(toc-depth)$
   outline-depth: $toc-depth$,
