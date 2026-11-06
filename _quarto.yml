@@ -4,4 +4,5 @@ project:
 author: jshn9515
 date: today
 date-format: iso
+bibliography: [refs-media.bib]
 quarto-required: ">=1.11.0"
