@@ -1,5 +1,11 @@
 """Download datasets used in the notes."""
 
+import os
+import sys
+
+if os.getenv('QUARTO_SKIP_DATASET_DOWNLOAD') == 'true':
+    sys.exit(0)
+
 import dnnlpy
 import torchvision.datasets as datasets
 
