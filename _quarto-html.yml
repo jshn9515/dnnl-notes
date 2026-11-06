@@ -48,6 +48,12 @@ website:
       loading: lazy
       input-position: top
       language: en
+  navbar:
+    right:
+      - text: 中文
+        href: zh/
+      - text: English
+        href: en/
   sidebar:
     - id: zh
       style: floating
