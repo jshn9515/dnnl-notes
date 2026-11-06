@@ -1,0 +1,104 @@
+name: Check Quarto Website Rendering
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "zh/**"
+      - "en/**"
+      - "courses/**"
+      - "index.qmd"
+      - "_quarto.yml"
+      - "_quarto-html.yml"
+      - "styles.css"
+      - "refs-*.bib"
+      - ".github/workflows/quarto-ci.yml"
+      - ".github/workflows/netlify-preview.yml"
+
+env:
+  DNNL_DATA_ROOT: ${{ github.workspace }}/datasets
+  DNNL_EXPERIMENTS_ROOT: ${{ github.workspace }}/experiments
+  HF_HOME: ~/.cache/huggingface
+  HF_TOKEN: ${{ secrets.HF_TOKEN }}
+  UV_TORCH_BACKEND: cpu
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quarto-ci:
+    name: quarto-ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Check for uv.lock changes
+        id: uv-lock-changes
+        shell: bash
+        run: |
+          if git diff --quiet \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}" \
+            -- uv.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Restore Quarto freeze cache
+        if: steps.uv-lock-changes.outputs.changed == 'false'
+        uses: actions/cache/restore@v6
+        with:
+          path: _freeze
+          key: quarto-freeze-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            quarto-freeze-${{ runner.os }}-
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.3.0
+        with:
+          enable-cache: true
+          prune-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+
+      - name: Install Python dependencies
+        run: |
+          uv python install 3.14
+          uv sync --python 3.14
+
+      - name: Download datasets for notebooks
+        timeout-minutes: 10
+        shell: bash
+        env:
+          UV_NO_SYNC: "1"
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$DNNL_DATA_ROOT/caltech101"
+          uv run gdown 19qo4t_YR0RGILU_nmpXHbo1mMGOvn3iH \
+            -O "$DNNL_DATA_ROOT/caltech101/caltech-101.zip"
+
+          mkdir -p "$DNNL_DATA_ROOT/MNIST"
+          uv run gdown 1Aph8a8r7_uFN-IsVu5oFmZ4_zJKckk4X \
+            -O "$DNNL_DATA_ROOT/MNIST/mnist.zip"
+          unzip -q "$DNNL_DATA_ROOT/MNIST/mnist.zip" -d "$DNNL_DATA_ROOT/MNIST"
+
+          uv run python utils/download_datasets.py
+
+      - name: Render quarto website
+        env:
+          QUARTO_PYTHON: ${{ github.workspace }}/.venv/bin/python
+        run: quarto render --profile html
