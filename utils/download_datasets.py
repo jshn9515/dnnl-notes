@@ -3,7 +3,7 @@
 import dnnlpy
 import torchvision.datasets as datasets
 
-ROOT = dnnlpy.get_data_root()
+ROOT = dnnlpy.get_data_dir()
 DATASETS = [
     datasets.MNIST,
     datasets.Caltech101,
