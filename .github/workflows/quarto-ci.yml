@@ -47,15 +47,22 @@ jobs:
       - name: Check for uv.lock changes
         id: uv-lock-changes
         shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          if git diff --quiet \
-            "${{ github.event.pull_request.base.sha }}" \
-            "${{ github.event.pull_request.head.sha }}" \
-            -- uv.lock; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
+          set -euo pipefail
+
+          merge_base=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+
+          status=0
+          git diff --quiet "$merge_base" "$HEAD_SHA" -- uv.lock || status=$?
+
+          case "$status" in
+            0) echo "changed=false" >> "$GITHUB_OUTPUT" ;;
+            1) echo "changed=true" >> "$GITHUB_OUTPUT" ;;
+            *) exit "$status" ;;
+          esac
 
       - name: Restore Quarto freeze cache
         if: steps.uv-lock-changes.outputs.changed == 'false'
