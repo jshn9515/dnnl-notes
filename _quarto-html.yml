@@ -38,3 +38,13 @@ website:
   open-graph:
     locale: en_US
     site-name: dnnl-notes
+  comments:
+    giscus:
+      repo: jshn9515/dnnl-notes
+      repo-id: R_kgDOVlbPuw
+      category: Announcements
+      category-id: DIC_kwDOVlbPu84DKiYL
+      mapping: og:title
+      loading: lazy
+      input-position: top
+      language: en
