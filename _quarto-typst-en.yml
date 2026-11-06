@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: "_typst/en"
+  render:
+    - "en/*.qmd"
+  post-render:
+    - "utils/clean_checkpoints.py"
+    - "utils/clean_quarto_cache.py"
+    - "utils/typst_rename_pdfs.py"
+
+execute:
+  jupyter: python3
+  freeze: auto
+  cache: true
+
+filters:
+  - "utils/typst-reference-page.lua"
+
+reference-section-title: "References"
+
+format:
+  typst:
+    lang: en
+    toc: true
+    toc-depth: 2
+    toc-indent: 0em
+    wrap: none
+    engine: jupyter
+    papersize: a4
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    code-annotations: below
+    citeproc: true
+    bibliographystyle: ieee
+    citation-location: document
+    syntax-highlighting: idiomatic
+    template-partials:
+      - "utils/typst-show.typ"
+    include-before-body:
+      - "utils/typst-header-en.typ"
+
+book:
+  title: "Deep Learning Notes"
+  output-file: "deep-learning-notes"
+  chapters:
+    - index.qmd

@@ -1,0 +1,48 @@
+project:
+  type: book
+  output-dir: "_typst/zh"
+  render:
+    - "zh/*.qmd"
+  post-render:
+    - "utils/clean_checkpoints.py"
+    - "utils/clean_quarto_cache.py"
+    - "utils/typst_rename_pdfs.py"
+
+execute:
+  jupyter: python3
+  freeze: auto
+  cache: true
+
+filters:
+  - "utils/typst-reference-page.lua"
+
+reference-section-title: "参考文献"
+
+format:
+  typst:
+    lang: en
+    toc: true
+    toc-depth: 2
+    toc-indent: 0em
+    wrap: none
+    engine: jupyter
+    papersize: a4
+    fig-align: center
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    mermaid-format: png
+    code-annotations: false
+    citeproc: true
+    bibliographystyle: ieee
+    citation-location: document
+    syntax-highlighting: idiomatic
+    template-partials:
+      - "utils/typst-show.typ"
+    include-before-body:
+      - "utils/typst-header-zh.typ"
+
+book:
+  title: "Deep Learning Notes"
+  output-file: "deep-learning-notes"
+  chapters:
+    - index.qmd

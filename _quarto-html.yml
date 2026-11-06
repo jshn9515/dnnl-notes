@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+  post-render:
+    - "utils/clean_checkpoints.py"
+    - "utils/clean_quarto_cache.py"
+    - "utils/html_generate_toc.py"
+
+execute:
+  jupyter: python3
+  freeze: auto
+  cache: true
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    grid:
+      sidebar-width: 250px
+      body-width: 850px
+      margin-width: 250px
+    css: styles.css
+    toc: true
+    syntax-highlighting: github
+    code-annotations: hover
+    license: CC BY-NC
+
+website:
+  title: dnnl-notes
+  search: true
+  back-to-top-navigation: false
+  page-navigation: true
+  repo-url: https://github.com/jshn9515/dnnl-notes
+  repo-actions: [source, issue, edit]
+  open-graph:
+    locale: en_US
+    site-name: dnnl-notes

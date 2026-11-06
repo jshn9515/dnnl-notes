@@ -1,0 +1,23 @@
+---
+title: "dnnl-notes"
+format: html
+author: jshn9515
+date: 2026-03-19
+date-modified: today
+page-layout: full
+comments: false
+---
+
+<script>
+var lang = navigator.language || navigator.userLanguage;
+
+if (lang.startsWith('zh')) {
+  window.location.href = "zh/index.html";
+} else {
+  window.location.href = "en/index.html";
+}
+</script>
+
+- Author: jshn9515
+- GitHub: [dnnl-notes](https://github.com/jshn9515/dnnl-notes)
+- Website: [jshn9515.github.io](https://jshn9515.github.io/dnnl-notes/)

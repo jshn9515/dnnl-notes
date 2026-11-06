@@ -1,0 +1,17 @@
+project:
+  type: default
+  output-dir: _jupyter
+  render:
+    - "*.qmd"
+  post-render:
+    - "utils/clean_quarto_cache.py"
+    - "utils/ipynb_clean_attachments.py"
+    - "utils/ipynb_add_image_attrs.py"
+
+execute:
+  enabled: false
+
+format:
+  ipynb:
+    toc: true
+    wrap: none
