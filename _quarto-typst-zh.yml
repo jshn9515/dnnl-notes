@@ -46,3 +46,11 @@ book:
   output-file: "deep-learning-notes"
   chapters:
     - index.qmd
+    - part: "Chapter 1: 深度学习简介"
+      chapters:
+        - "zh/ch1-introduction/ch1.1-neural-network.qmd"
+        - "zh/ch1-introduction/ch1.2-loss-function.qmd"
+        - "zh/ch1-introduction/ch1.3-computation-graph.qmd"
+        - "zh/ch1-introduction/ch1.4-gradient-descent.qmd"
+        - "zh/ch1-introduction/ch1.5-why-neural-networks-can-be-trained.qmd"
+        - "zh/ch1-introduction/ch1.6-exercises.qmd"
