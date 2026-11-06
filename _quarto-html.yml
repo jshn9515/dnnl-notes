@@ -52,6 +52,11 @@ website:
     - id: zh
       style: floating
       collapse-level: 1
+      contents:
+        - section: "Part 1: 深度学习基础"
+          contents:
+            - section: "Chapter 1: 深度学习简介"
+              contents: "zh/ch1-introduction/*.qmd"
     - id: en
       style: floating
       collapse-level: 1
