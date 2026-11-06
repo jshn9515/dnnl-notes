@@ -6,6 +6,7 @@
   "timezone": "America/New_York",
   "assignees": ["jshn9515"],
   "addLabels": ["dependencies", "python"],
+  "cloneSubmodules": true,
   "packageRules": [
     {
       "groupName": "PyTorch packages",
