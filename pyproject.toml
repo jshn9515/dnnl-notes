@@ -81,6 +81,9 @@ torch-backend = "cpu"
 
 [tool.uv.sources]
 torch = { index = "pytorch-cpu" }
+torchaudio = { index = "pytorch-cpu" }
+torchcodec = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
 dnnlpy = { path = "./dnnlpy" }
 
 [[tool.uv.index]]
