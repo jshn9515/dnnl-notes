@@ -1,5 +1,6 @@
 """Generate English and Chinese TOC files from the Quarto sidebars."""
 
+import os
 import re
 from pathlib import Path
 
@@ -12,6 +13,10 @@ LANGUAGES = ('en', 'zh')
 
 FRONT_MATTER_TITLE_RE = re.compile(r'^title:\s*(?P<title>.+?)\s*$')
 NUMBER_RE = re.compile(r'ch(?P<chapter>\d+)\.(?P<section>\d+)')
+
+
+def is_github_actions() -> bool:
+    return os.getenv('GITHUB_ACTIONS', 'false') == 'true'
 
 
 def sort_key(path: Path) -> tuple[int, int, int, str]:
@@ -88,4 +93,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if not is_github_actions():
+        main()
