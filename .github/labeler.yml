@@ -1,0 +1,32 @@
+ci:
+  - changed-files:
+      - any-glob-to-any-file: ".github/workflows/**"
+
+pre-commit:
+  - changed-files:
+      - any-glob-to-any-file: ".pre-commit-config.yaml"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/renovate.json"
+          - "pyproject.toml"
+          - "uv.lock"
+
+tutorial:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "index.qmd"
+          - "zh/**"
+          - "en/**"
+          - "courses/**"
+
+lang-zh:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "zh/**"
+
+lang-en:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "en/**"
