@@ -8,6 +8,7 @@ on:
       - "en/**"
       - "courses/**"
       - "index.qmd"
+      - "pyproject.toml"
       - "_quarto.yml"
       - "_quarto-html.yml"
       - "styles.css"
