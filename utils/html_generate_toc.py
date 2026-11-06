@@ -15,8 +15,8 @@ FRONT_MATTER_TITLE_RE = re.compile(r'^title:\s*(?P<title>.+?)\s*$')
 NUMBER_RE = re.compile(r'ch(?P<chapter>\d+)\.(?P<section>\d+)')
 
 
-def is_github_actions() -> bool:
-    return os.getenv('GITHUB_ACTIONS', 'false') == 'true'
+def is_ci_platform() -> bool:
+    return os.getenv('CI', 'false') == 'true'
 
 
 def sort_key(path: Path) -> tuple[int, int, int, str]:
@@ -93,5 +93,5 @@ def main():
 
 
 if __name__ == '__main__':
-    if not is_github_actions():
+    if not is_ci_platform():
         main()
