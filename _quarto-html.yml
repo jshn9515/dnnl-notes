@@ -48,3 +48,10 @@ website:
       loading: lazy
       input-position: top
       language: en
+  sidebar:
+    - id: zh
+      style: floating
+      collapse-level: 1
+    - id: en
+      style: floating
+      collapse-level: 1
