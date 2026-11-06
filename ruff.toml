@@ -83,6 +83,9 @@ force-single-line = false
 # Combines as imports on the same line. See isort's combine-as-imports option.
 combine-as-imports = true
 
+# Mark dnnlpy as a known third-party package.
+known-third-party = ["dnnlpy"]
+
 [lint.pydocstyle]
 # Use Google-style docstrings.
 convention = "google"

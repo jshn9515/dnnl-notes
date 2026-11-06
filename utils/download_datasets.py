@@ -1,8 +1,7 @@
 """Download datasets used in the notes."""
 
-import torchvision.datasets as datasets
-
 import dnnlpy
+import torchvision.datasets as datasets
 
 ROOT = dnnlpy.get_data_root()
 DATASETS = [
