@@ -1,0 +1,3 @@
+[submodule "dnnlpy"]
+	path = dnnlpy
+	url = https://github.com/jshn9515/dnnlpy.git
