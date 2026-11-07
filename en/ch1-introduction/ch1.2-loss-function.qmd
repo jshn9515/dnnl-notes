@@ -9,7 +9,7 @@ title: "1.2 Loss Function: How Does a Model Know How Wrong It Is?"
 order: 2
 ---
 
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/zh/ch1-introduction/ch1.2-loss-function.ipynb){fig-align="left"}
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/en/ch1-introduction/ch1.2-loss-function.ipynb){fig-align="left"}
 
 In the previous section, we viewed a neural network as a **learnable parameterized function**:
 

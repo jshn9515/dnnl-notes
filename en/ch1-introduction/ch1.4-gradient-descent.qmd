@@ -9,7 +9,7 @@ title: "1.4 Gradient Descent: From Gradients to Parameter Updates"
 order: 4
 ---
 
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/zh/ch1-introduction/ch1.4-gradient-descent.ipynb){fig-align="left"}
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/en/ch1-introduction/ch1.4-gradient-descent.ipynb){fig-align="left"}
 
 In the previous section, we learned how forward propagation produces predictions, how the loss function measures error, and how backpropagation computes the gradients of the parameters. But the gradients themselves do not change the model.
 

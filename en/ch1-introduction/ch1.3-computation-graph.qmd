@@ -9,7 +9,7 @@ title: "1.3 Forward Propagation, Backpropagation, and Computation Graph"
 order: 3
 ---
 
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/zh/ch1-introduction/ch1.3-computation-graph.ipynb){fig-align="left"}
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/en/ch1-introduction/ch1.3-computation-graph.ipynb){fig-align="left"}
 
 In the previous two sections, we built up the basic problem of neural network training step by step.
 

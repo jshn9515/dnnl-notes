@@ -9,7 +9,7 @@ title: "1.5 Why Neural Networks Can Be Trained: Optimization Intuition in High-D
 order: 5
 ---
 
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/zh/ch1-introduction/ch1.5-why-neural-networks-can-be-trained.ipynb){fig-align="left"}
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/en/ch1-introduction/ch1.5-why-neural-networks-can-be-trained.ipynb){fig-align="left"}
 
 In the previous sections, we broke down the training process of a neural network step by step. The model first obtains a prediction through the forward pass, then uses a loss function to measure the gap between the prediction and the target; backpropagation computes the gradients, and gradient descent updates the parameters according to those gradients. Thus, one basic training step can be written as:
 

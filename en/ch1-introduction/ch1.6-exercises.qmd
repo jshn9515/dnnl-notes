@@ -9,7 +9,7 @@ title: "1.6 Chapter 1 Exercises: Introduction to Deep Learning"
 order: 6
 ---
 
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/zh/ch1-introduction/ch1.6-exercises.ipynb){fig-align="left"}
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/en/ch1-introduction/ch1.6-exercises.ipynb){fig-align="left"}
 
 1\. A neural network can be viewed as a parameterized function:
 
