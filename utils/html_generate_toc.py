@@ -1,6 +1,5 @@
 """Generate English and Chinese TOC files from the Quarto sidebars."""
 
-import os
 import re
 from pathlib import Path
 
@@ -13,10 +12,6 @@ LANGUAGES = ('en', 'zh')
 
 FRONT_MATTER_TITLE_RE = re.compile(r'^title:\s*(?P<title>.+?)\s*$')
 NUMBER_RE = re.compile(r'ch(?P<chapter>\d+)\.(?P<section>\d+)')
-
-
-def is_ci_platform() -> bool:
-    return os.getenv('CI', 'false') == 'true'
 
 
 def sort_key(path: Path) -> tuple[int, int, int, str]:
@@ -51,13 +46,36 @@ def read_chapters(language: str) -> list[tuple[str, list[Path]]]:
     config = yaml.safe_load(QUARTO_CONFIG.read_text(encoding='utf-8'))
     chapters = []
 
-    sidebars = config['website']['sidebar']
-    sidebar = next(item for item in sidebars if item.get('id') == language)
+    website = config.get('website', {}) if isinstance(config, dict) else {}
+    sidebars = website.get('sidebar', []) if isinstance(website, dict) else []
+    if not isinstance(sidebars, list):
+        return chapters
+
+    sidebar = next(
+        (
+            item
+            for item in sidebars
+            if isinstance(item, dict) and item.get('id') == language
+        ),
+        None,
+    )
+    if sidebar is None or not isinstance(sidebar.get('contents'), list):
+        return chapters
 
     for part in sidebar['contents']:
-        for chapter in part.get('contents', []):
-            title = chapter['section']
-            pattern = chapter['contents']
+        if not isinstance(part, dict) or not isinstance(part.get('contents'), list):
+            continue
+
+        for chapter in part['contents']:
+            if not isinstance(chapter, dict):
+                continue
+
+            title = chapter.get('section')
+            pattern = chapter.get('contents')
+
+            if not isinstance(title, str) or not isinstance(pattern, str):
+                continue
+
             files = sorted(ROOT.glob(pattern), key=sort_key)
             chapters.append((title, files))
 
@@ -84,8 +102,10 @@ def main():
     """Generate TOC files for English and Chinese."""
     for language in LANGUAGES:
         chapters = read_chapters(language)
-        book_toc = build_toc(chapters)
+        if not chapters:
+            continue
 
+        book_toc = build_toc(chapters)
         markdown = ROOT / language / 'README.md'
         markdown.write_text(book_toc, encoding='utf-8')
 
@@ -93,5 +113,4 @@ def main():
 
 
 if __name__ == '__main__':
-    if not is_ci_platform():
-        main()
+    main()
