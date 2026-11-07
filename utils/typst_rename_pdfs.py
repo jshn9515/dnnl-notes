@@ -7,15 +7,15 @@ ROOT = Path(__file__).resolve().parents[1]
 TYPST_DIR = ROOT / '_typst'
 
 PDF_NAMES = {
-    'zh': 'deep-learning-notes-zh.pdf',
-    'en': 'deep-learning-notes-en.pdf',
+    'zh': 'dnnl-notes-zh.pdf',
+    'en': 'dnnl-notes-en.pdf',
 }
 
 
 def find_source(language_dir: Path, target_name: str) -> Path | None:
     """Find the rendered PDF without depending on the checkout directory name."""
     candidates = (
-        language_dir / 'deep-learning-notes.pdf',
+        language_dir / 'dnnl-notes.pdf',
         language_dir / target_name,
         language_dir / f'{ROOT.name}.pdf',
     )

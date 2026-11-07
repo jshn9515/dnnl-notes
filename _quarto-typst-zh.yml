@@ -43,7 +43,7 @@ format:
 
 book:
   title: "Deep Learning Notes"
-  output-file: "deep-learning-notes"
+  output-file: "dnnl-notes"
   chapters:
     - index.qmd
     - part: "Chapter 1: 深度学习简介"
