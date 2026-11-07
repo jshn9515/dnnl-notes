@@ -1,0 +1,89 @@
+---
+author: xcherry9988-code
+date: 2026-09-21
+date-modified: 2026-09-21
+open-graph:
+  title: ch1.6-exercises
+  description: "1.6 Chapter 1 Exercises: Introduction to Deep Learning"
+title: "1.6 Chapter 1 Exercises: Introduction to Deep Learning"
+order: 6
+---
+
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jshn9515/dnnl-notebooks/blob/main/en/ch1-introduction/ch1.6-exercises.ipynb){fig-align="left"}
+
+1\. A neural network can be viewed as a parameterized function:
+
+$$
+\hat{y} = f(x;\theta)
+$$
+
+Here, $\theta$ represents the model's ______. Training a neural network essentially involves repeatedly adjusting $\theta$ to make the loss function on the training data as ______ as possible.
+
+2\. Which of the following statements about backpropagation and parameter updates is correct?
+
+A. Backpropagation automatically modifies model parameters while computing gradients.  
+B. Backpropagation computes gradients with respect to parameters, while the parameter update step uses those gradients to modify the parameters.  
+C. Once the forward pass is complete, model parameters are automatically updated based on the loss.  
+D. Gradient descent computes gradients, while backpropagation selects the learning rate.
+
+3\. In the high-dimensional loss landscape of a neural network, suppose the gradient at a point is zero. Which of the following statements is correct?
+
+A. The point must be a global minimum.  
+B. The point must be a local minimum.  
+C. The point could be a local minimum, a local maximum, or a saddle point; further examination of the local curvature is needed.  
+D. The point indicates that gradient descent has failed and training cannot continue.
+
+4\. Run the following code and observe the parameter and loss before and after one gradient descent update:
+
+```python
+theta = 5.0
+lr = 0.1
+
+loss1 = (theta - 3) ** 2
+grad = 2 * (theta - 3)
+
+theta = theta - lr * grad
+loss2 = (theta - 3) ** 2
+
+print(f'theta: {theta:.4f}')
+print(f'loss1: {loss1:.4f}')
+print(f'loss2: {loss2:.4f}')
+```
+
+Write down the program's output and explain why this update moves `theta` closer to 3.
+
+## Reference Answers
+
+1\. <span style="color: #1565C0;">**Answer: parameters; small**</span>
+
+$\theta$ determines the function currently represented by the model. The goal of training is to continuously adjust these parameters so that the loss between the model's predictions and the true targets is as small as possible.
+
+2\. <span style="color: #1565C0;">**Answer: B**</span>
+
+Backpropagation uses the computation graph and the chain rule to compute gradients with respect to each parameter, but it does not automatically modify the parameters. The actual parameter changes occur during an update step, such as gradient descent.
+
+3\. <span style="color: #1565C0;">**Answer: C**</span>
+
+A zero gradient only indicates that the point is a critical point; it does not guarantee a minimum. In a high-dimensional parameter space, the point could also be a local maximum or a saddle point. Local curvature information, such as the Hessian, can help distinguish these cases.
+
+4\. <span style="color: #1565C0;">**Answer: 4.6; 4.0; 2.56**</span>
+
+Initially:
+
+$$
+\theta = 5
+$$
+
+The gradient is:
+
+$$
+\frac{dL}{d\theta} = 2(\theta - 3) = 4
+$$
+
+Because the gradient is positive, increasing $\theta$ would increase the loss. Gradient descent therefore updates the parameter in the negative gradient direction:
+
+$$
+\theta \leftarrow 5 - 0.1\times 4 = 4.6
+$$
+
+After the update, the parameter moves closer to $\theta=3$, where the loss reaches its minimum, and the loss decreases from 4.0 to 2.56.

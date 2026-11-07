@@ -66,3 +66,8 @@ website:
     - id: en
       style: floating
       collapse-level: 1
+      contents:
+        - section: "Part 1: Deep Learning Fundamentals"
+          contents:
+            - section: "Chapter 1: Introduction to Deep Learning"
+              contents: "en/ch1-introduction/*.qmd"
