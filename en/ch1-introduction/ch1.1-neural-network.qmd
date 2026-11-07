@@ -94,9 +94,8 @@ Imagine the neural network as an adjustable faucet, and the parameters are the k
 Specifically, the learning process of a neural network can be divided into 5 steps:
 
 1. Initialize parameters: before training starts, assign a set of random values to the parameters $\theta$. At this time, the model's output is rough, or even meaningless;
-2. Model prediction: input $x$ into the model, and according to the current parameters, obtain output $y$;
-3. Calculate deviation: compare the model output $y$ with the real target value, and judge whether the model is doing well (this step will use the loss function to be learned later);
-4. Adjust parameters: according to the size and direction of the deviation, adjust the values of the parameters $\theta$, so that the model's output is closer to the target;
+2. Model prediction: input $x$ into the model, and according to the current parameters, obtain prediction $\hat{y}$;
+3. Calculate deviation: compare the model prediction $\hat{y}$ with the real target value, and judge whether the model is doing well (this step will use the loss function to be learned later);
 5. Repeat iteration: repeat steps 2-4 until the model's output is accurate enough and the parameters no longer need large adjustments.
 
 So, the learning of a neural network is not instilling rules, nor understanding concepts, but making the function gradually approximate the mapping relationship we expect by repeatedly adjusting parameters. This perspective is very important. Because once we look at neural networks from the perspective of "function" and "parameter adjustment", we can understand many later concepts. Why do we need a loss function? Because we need to measure whether the current function is doing well; why do we need backpropagation? Because we need to know how the parameters should be adjusted; why is there an optimization problem? Because the parameter space is very large, and finding a better function is not easy. Of course, if you do not fully understand this process right now, do not worry. Later we will demonstrate this process step by step through concrete examples and code.
