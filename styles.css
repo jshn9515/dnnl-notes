@@ -123,3 +123,12 @@ pre.text {
   border-radius: 6px;
   overflow-x: auto;
 }
+
+/* style for inline code in text */
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+td code:not(.sourceCode),
+dd code:not(.sourceCode) {
+    color: #990000;
+    background-color: transparent;
+}
