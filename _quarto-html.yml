@@ -15,6 +15,7 @@ execute:
 
 format:
   html:
+    fontsize: 18px
     theme:
       - cosmo
       - brand
