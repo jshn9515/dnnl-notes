@@ -1,6 +1,3 @@
-ci:
-  skip: [ty]
-
 repos:
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.0
@@ -17,9 +14,3 @@ repos:
       - id: ruff-format
         files: \.(py|md|qmd|ipynb)$
         types_or: [file]
-  
-  - repo: https://github.com/astral-sh/ty-pre-commit
-    rev: v0.0.100
-    hooks:
-      - id: ty
-        args: [--locked]
