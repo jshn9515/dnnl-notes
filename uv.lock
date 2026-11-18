@@ -683,7 +683,7 @@ requires-dist = [
     { name = "sphinx", marker = "python_full_version >= '3.13' and extra == 'docs'", specifier = ">=9.2.0,<9.3.0" },
     { name = "sphinx-autoapi", marker = "extra == 'docs'", specifier = ">=3.9.0,<3.10.0" },
     { name = "torch", extras = ["opt-einsum", "pyyaml"], specifier = ">=2.15.0,<2.16.0", index = "https://download.pytorch.org/whl/cpu" },
-    { name = "ty", marker = "extra == 'dev'", specifier = "==0.0.97" },
+    { name = "ty", marker = "extra == 'dev'", specifier = "==0.0.100" },
 ]
 provides-extras = ["rl", "dev", "docs", "test"]
 
