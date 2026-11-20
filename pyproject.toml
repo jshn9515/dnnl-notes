@@ -43,7 +43,7 @@ dependencies = [
 
     # High performance kernels
     "triton>=3.9.0,<3.10.0; sys_platform == 'linux'",
-    "xformers==0.0.35",
+    "xformers==0.0.36",
 
     # Scientific computing and machine learning
     "numpy>=2.5.0,<2.6.0",
